@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <ul id="lista">
+  </ul> -->
+  <div id="calculador-container">
+    <div id="div-gato">
+      <h2>Calculadora interativa</h2>
+    <img src="http://placekitten.com/100/100" alt="">
+    </div>
+    <div class="operacoes">
+      <label for="soma">
+        Soma
+        <input type="radio" name="calc" value="soma" id="soma">
+      </label>
+      <label for="subtracao">
+        Subtração
+        <input type="radio" name="calc" value="subtracao" id="subtracao">
+      </label>
+      <label for="divisao">
+        Divisão
+        <input type="radio" name="calc" value="divisao" id="divisao">
+      </label>
+      <label for="multiplicacao">
+        Multiplicação
+        <input type="radio" name="calc" value="multiplicacao" id="multiplicacao">
+      </label>
+    </div>
+    <label for="">
+      Digite o primeiro valor
+      <input type="number" name="" id="x">
+    </label>
+    <label for="">
+      Digite o segundo valor
+      <input type="number" name="" id="y">
+    </label>
+   
+    <button onclick="operacao()">Calcular</button>
+    <h2 id="resultado"></h2>
+  </div>
+  <style>
+    body {
+      height: 100vh;
+      font-family: sans-serif;
+    }
+    #calculador-container{
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem
+    }
+    input[type="number"]{
+      padding: 0.5rem;
+      font-size: larger;
+      outline: none;
+      border: none;
+      box-shadow: 0px 0px 6px rgb(95, 95, 95);
+      border-radius: 10px;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    #div-gato {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #div-gato img {
+      border-radius: 100%;
+    }
+    #resultado {
+      color: #5de65d;
+    }
+    button {
+      width: 10rem;
+      outline: none;
+      border: none;
+      box-shadow: 0px 0px 5px;
+      background: none;
+      border-radius: 15px;
+      padding: 0.7rem 1rem;
+      cursor: pointer;
+    }
+    .operacoes {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+    .operacoes > label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 5px;
+      gap: 0.2rem;
+      padding: 0.3rem;
+      width: 100%;
+    }
+  </style>
+  <script src="script.js"></script>
+</body>
+</html>

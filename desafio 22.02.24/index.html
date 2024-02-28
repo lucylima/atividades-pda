@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="titulo">bom dia</h1>
+    <img src="http://placekitten.com/100/100" alt="" />
+    <br />
+    <button id="botao">mi clique</button>
+    <br />
+    <button id="black">dark mode</button>
+
+    <script src="script.js"></script>
+    <style>
+      body {
+        transition: 1.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .lightmode{
+        background-color: white;
+        color: black;
+        transition: 1.2s;
+      }
+      .darkmode {
+        background-color: black;
+        color: white;
+        transition: 1.2s;
+      }
+    </style>
+  </body>
+</html>
