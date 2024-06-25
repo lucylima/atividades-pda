@@ -1,0 +1,451 @@
+-- SQLBook: Code
+USE sakila;
+
+select * from actor;
+
+SELECT * FROM film;
+
+SELECT title, length FROM film;
+
+SELECT *
+FROM film
+WHERE
+    title BETWEEN "ACADEMY DINOSAUR" AND "ALABAMA DEVIL"
+    AND length BETWEEN 86 AND 150;
+
+SELECT first_name, second_name
+FROM actor
+WHERE
+    first_name IN ("PENELOPE", "JHONNY");
+
+SELECT * FROM actor WHERE first_name LIKE "L%";
+
+SELECT * FROM film WHERE title LIKE "________";
+
+SELECT DISTINCT name FROM category;
+
+SELECT * FROM film ORDER BY film_id ASC;
+
+SELECT * FROM payment;
+
+SELECT * FROM film ORDER BY film_id DESC;
+
+SELECT MAX(amount) AS valor_maximo, MIN(amount) AS valor_minimo
+FROM payment;
+
+-- mão na massa
+-- between feitoooo
+SELECT * FROM film WHERE length BETWEEN 80 AND 120;
+
+SELECT * FROM film WHERE rental_duration BETWEEN 6 AND 7;
+-- order by
+SELECT * FROM actor ORDER BY actor_id DESC;
+
+SELECT * FROM actor ORDER BY actor_id ASC;
+-- like
+SELECT * FROM payment WHERE rental_id LIKE '1%';
+
+-- CONSEGUI
+SELECT MAX(amount) AS valor_maximo, MIN(amount) AS valor_minimo
+from payment
+where
+    payment_id between 1 and 5;
+
+SELECT * FROM address where address LIKE '%e';
+
+SELECT * FROM film where title LIKE "b%";
+
+SELECT * FROM store;
+-- SQLBook: Code
+select * from actor where actor_id >= 10 and first_name <> "KARL";
+-- selecione todas as linhas de ator onde o ator_id seja maior ou igual a 10
+-- e que o primeiro_nome seja diferente de "KARL"
+select * from actor where actor_id in (10, 22, 13, 11);
+-- selecione todas as linhas de ator onde o ator_id seja 10, 22, 13, 11
+select *
+from actor
+where
+    first_name in (
+        "CHRISTIAN",
+        "ZERO",
+        "UMA",
+        "DAVID"
+    );
+-- selecione todas as linhas de ator onde o primeiro_nome seja christian, zero, uma, david
+select * from payment where amount = 4.99;
+-- selecione todas as colunas de pagamento onde a quantidade seja igual 4.99
+-- SQLBook: Code
+create database petshop;
+
+use petshop;
+
+CREATE Table pets (
+    id int primary key not null AUTO_INCREMENT,
+    name varchar(50),
+    breed varchar(50),
+    age int,
+    fk_owner_id int
+);
+
+CREATE Table Owners (
+    id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name varchar(100),
+    fk_pets_id int
+);
+
+select * from pets;
+
+select * from actor order by first_name desc;
+-- SQLBook: Code
+CREATE DATABASE bomboniere;
+
+USE bomboniere;
+
+CREATE TABLE tb_products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    description VARCHAR(255),
+    price DECIMAL(5, 2),
+    quantity_stock INT DEFAULT(0),
+    category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES tb_categories (id)
+);
+
+CREATE TABLE tb_categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+-- ------------------------------------
+
+-- CRUD
+
+-- Create tem ligação com INSERIR UM DADO no BD
+-- C -> CREATE
+INSERT INTO tb_categories (name) VALUES ('doce');
+
+INSERT INTO tb_categories (name) VALUE ('salgados');
+
+INSERT INTO
+    tb_products (
+        price,
+        name,
+        description,
+        category_id,
+        quantity_stock
+    )
+VALUES (
+        2.99,
+        'trufa',
+        'trufa de chocolate',
+        1,
+        30
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'bala 7 belo',
+        'bala de iogurte',
+        0.1,
+        20,
+        1
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'bombom',
+        'bombom sonho de valsa',
+        1.50,
+        30,
+        1
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'bala de goma',
+        'bala de goma sortida',
+        0.90,
+        10,
+        1
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'yakult',
+        'bebida leite fermentado',
+        10.90,
+        9,
+        1
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'coxinha',
+        'bebida leite fermentado',
+        6.90,
+        4,
+        2
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'salgadinho',
+        'salgadinho fofura',
+        5.99,
+        3,
+        2
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'bala 7 belo',
+        'bala de tutti fruit',
+        0.1,
+        9,
+        1
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'risole',
+        'risole de presunto e queijo',
+        8.43,
+        22,
+        2
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'suspiro',
+        'suspiro doce',
+        0.89,
+        0,
+        1
+    );
+
+INSERT INTO
+    tb_products (
+        name,
+        description,
+        price,
+        quantity_stock,
+        category_id
+    )
+VALUES (
+        'pé de moleque',
+        'pé de moleque doce',
+        3.20,
+        0,
+        9
+    );
+
+SELECT
+    name,
+    category_id,
+    CASE
+        WHEN category_id = 1 THEN 'doce'
+        WHEN category_id = 2 THEN 'salgado'
+        ELSE 'sem categoria'
+    END AS type
+FROM tb_products;
+-- SQLBook: Code
+CREATE DATABASE detran;
+USE detran;
+CREATE TABLE tb_people (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  age INT NOT NULL,
+  id_type INT NOT NULL,
+  FOREIGN KEY (id_type) REFERENCES tb_type_license(id),
+  created_at DATETIME DEFAULT (NOW())
+);
+
+CREATE TABLE tb_type_license (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name CHAR(2) NOT NULL,
+  validity INT NOT NULL
+);
+
+INSERT INTO tb_people (name,age,id_type) VALUES
+('Joaozinho', 29, 6),
+('Laura', 25, 5),
+('José', 30, 4),
+('Maria', 22, 5),
+('Antônio', 18, 4),
+('Eduarda', 32, 1),
+('Marcos', 23, 3),
+('Otávio', 28,7),
+('Simone', 37,6),
+('Vinicius', 34,7),
+('Cris', 46,6);
+
+SELECT * FROM tb_people;
+
+
+
+INSERT INTO tb_type_license (name,validity) VALUES
+('AP',1),
+('A0', 10),
+('BP', 1),
+('B0', 10),
+('AB', 10),
+('CP', 1),
+('C0', 12);
+
+SELECT * FROM tb_type_license;
+
+SELECT * FROM tb_people;
+SELECT * FROM tb_type_license WHERE id = 6;
+-- retorne as colunas id e nome dos estudante e professores onde os professores tenham o mesmo nome 
+-- que os alunos 
+SELECT estudante.id AS estudante_id, estudante.nome AS estudante_nome, professor.id AS professor_id, professor.nome AS professor_nome
+FROM estudantes AS estudante
+INNER JOIN professores AS professor
+ON estudante.nome = professor.nome;
+
+-- Retorne as colunas nome e idade que vem da tabela people e nome e a validade da licensa que aquela pessoa possui
+SELECT people.name AS people_name, people.age AS people_age, license.name AS license_name, license.validity AS license_validity
+FROM tb_people AS people
+INNER JOIN tb_type_license AS license
+ON people.id_type = license.id;
+
+-- WHERE - SELECT
+-- HAVING - GROUPBY
+-- ON - INNERS
+-- SQLBook: Code
+CREATE DATABASE bd_store;
+USE bd_store;
+
+CREATE TABLE tb_adress (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  street VARCHAR(80) NOT NULL,
+  number INT, 
+  city VARCHAR(25) NOT NULL,
+  state CHAR(2) NOT NULL,
+  created_at DATETIME DEFAULT (NOW())
+);
+
+CREATE TABLE tb_employee (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL, 
+  password VARCHAR(255) NOT NULL,
+  age INT,
+  id_adress INT,
+  FOREIGN KEY (id_adress) REFERENCES tb_adress(id),
+  created_at DATETIME DEFAULT (NOW())
+);
+
+INSERT INTO tb_adress (street,city,number,state) VALUES 
+('Av. paulista', 'São Paulo', 44, 'SP'),
+('Av. brigadeiro luiz antonio', 'São Paulo', null, 'SP'),
+('Rua tremenbé bonifacio', 'São Paulo', 12, 'SP'),
+('Rua doutor alexandre pinheiros', 'São Paulo', 97, 'SP'),
+('Av. torres do Brazil', 'São Paulo', null, 'SP');
+
+INSERT INTO tb_employee (name,email, password,age,id_adress) VALUES
+('Joaozinho', 'Joaozinho@gmail.com', 'Joaozinho123', 29, 1),
+('Laura', 'Laura@gmail.com','Laura123', 25, 2),
+('José', 'José@gmail.com','José123', 30, 3),
+('Maria', 'Maria@gmail.com', 'Maria123', null, 5),
+('Antônio', 'Antônio@gmail.com', 'Antônio123', 18, 4),
+('Eduarda', 'Eduarda@gmail.com', 'Eduarda123', 32, 1),
+('Marcos', 'Marcos@gmail.com', 'Marcos123', 23, 3),
+('Otávio', 'Otávio@gmail.com', 'Otávio123', null,4),
+('Simone', 'Simone@gmail.com', 'Simone123', 37,5),
+('Vinicius', 'Vinicius@gmail.com', 'Vinicius123', 34,2),
+('Cris', 'Cris@gmail.com', 'Cris123', null,1);
+
+truncate table tb_employee;
+
+SELECT * FROM tb_employee;
+SELECT employee.name, adress.street, adress.number
+FROM tb_employee AS employee 
+LEFT JOIN tb_adress AS adress
+ON employee.id_adress = adress.id;
+
+SELECT employee.name, employee.email, employee.age, adress.street, adress.city, adress.state, adress.number
+FROM tb_employee AS employee
+right join tb_adress AS adress
+ON employee.id_adress = adress.id;
+
+select employee.name, employee.email, adress.street, adress.number, adress.city 
+from tb_employee as employee
+inner join tb_adress as adress
+on employee.id_adress = adress.id;
+
+
+select * from tb_employee;
+select * from tb_adress;
+
+-- SELECT
+--   [ tabela1.coluna1, tabela1.coluna2, ... | N.coluna1, N.coluna2, … ]
+-- FROM
+--   [ tabela1 | tabela1 F ]
+-- LEFT JOIN
+--   [ tabelaX | tabelaX N]
+-- ON
+--   [ tabelaX.coluna1 = tabela1.coluna1 | N.coluna1 = F.coluna1 ]

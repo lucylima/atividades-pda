@@ -1,0 +1,64 @@
+-- SQLBook: Code
+CREATE DATABASE loja_roupa;
+
+USE loja_roupa;
+
+CREATE TABLE Produtos (
+    id int not NULL AUTO_INCREMENT PRIMARY KEY,
+    item varchar(50),
+    categoria varchar(30),
+    quantidade int,
+    preco decimal(5, 2)
+);
+
+CREATE TABLE Cliente (
+    id int primary key auto_increment not null,
+    nome varchar(100),
+    cpf char(11),
+    telefone char(11),
+    email varchar(100),
+    endereco varchar(200)
+);
+
+CREATE TABLE Metodo_pagamento (
+    id int not null AUTO_INCREMENT primary key,
+    metodo varchar(50)
+);
+
+--alterar tabela e colocar fk de cliente, produto e metodo
+CREATE TABLE Vendas ( id int not null primary key AUTO_INCREMENT );
+
+ALTER TABLE Vendas
+ADD (
+    cliente_id int,
+    produto_id int,
+    metodo_id int
+);
+
+ALTER TABLE Vendas
+ADD (
+    FOREIGN KEY (cliente_id) REFERENCES Cliente (id),
+    FOREIGN KEY (produto_id) REFERENCES Produtos (id),
+    FOREIGN KEY (metodo_id) REFERENCES Metodo_pagamento (id)
+);
+
+INSERT INTO
+    Produtos (
+        item,
+        categoria,
+        quantidade,
+        preco
+    )
+VALUES (
+        (
+            'saia de renda',
+            'saias',
+            5,
+            32.85
+        ),
+        ()
+    );
+
+SELECT * FROM Produtos;
+
+SELECT * FROM Cliente;
